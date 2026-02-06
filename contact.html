@@ -312,48 +312,78 @@
                     <h3 style="font-size: 32px; font-weight: 800; color: var(--cat-black); margin-bottom: 12px;">Request a Quote</h3>
                     <p style="font-size: 16px; color: var(--cat-gray); margin-bottom: 32px;">Fill out the form below and we'll get back to you within 24 hours</p>
                     
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Full Name <span class="required">*</span></label>
-                                <input type="text" id="name" class="form-input" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Company Name</label>
-                                <input type="text" id="company" class="form-input" placeholder="Your Company">
-                            </div>
-                        </div>
+                    <form id="whatsappForm">
+    <div class="form-row">
+        <div class="form-group">
+            <label class="form-label">Full Name <span class="required">*</span></label>
+            <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Company Name</label>
+            <input type="text" name="company" class="form-input" placeholder="Your Company">
+        </div>
+    </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Phone Number <span class="required">*</span></label>
-                                <input type="tel" id="phone" class="form-input" placeholder="+234 XXX XXX XXXX" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" id="email" class="form-input" placeholder="you@company.com">
-                            </div>
-                        </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="form-label">Phone Number <span class="required">*</span></label>
+            <input type="tel" name="phone" class="form-input" placeholder="+234 XXX XXX XXXX" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Equipment / Part Type <span class="required">*</span></label>
+            <select name="equipment" class="form-select" required>
+                <option value="">Select Equipment</option>
+                <option value="Excavator">Excavator</option>
+                <option value="Bulldozer">Bulldozer</option>
+                <option value="Loader">Loader</option>
+                <option value="Engine">Caterpillar Engine</option>
+                <option value="Filters">Filters</option>
+                <option value="Tracks">Tracks</option>
+            </select>
+        </div>
+    </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Service Needed <span class="required">*</span></label>
-                            <select id="service" class="form-select" required>
-                                <option value="">Select a service</option>
-                                <option value="spare-parts">Caterpillar Spare Parts</option>
-                                <option value="equipment-sales">Heavy Equipment Sales</option>
-                                <option value="machinery-support">Industrial Machinery Support</option>
-                                <option value="equipment-solutions">Construction Equipment Solutions</option>
-                                <option value="technical-consultation">Technical Consultation</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+    <div class="form-group">
+        <label class="form-label">Size / Specification <span class="required">*</span></label>
+        <input type="text" name="size" class="form-input" placeholder="Size / Specification" required>
+    </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Message / Requirements <span class="required">*</span></label>
-                            <textarea id="message" class="form-textarea" placeholder="Please provide details about the parts or equipment you need, including model numbers if available..." required></textarea>
-                        </div>
+    <div class="form-group">
+        <label class="form-label">Additional Details</label>
+        <textarea name="details" class="form-textarea" placeholder="Any other information"></textarea>
+    </div>
 
-                        <button type="submit" class="submit-btn">Send Inquiry</button>
+    <button type="button" class="submit-btn" onclick="sendWhatsApp()">Send via WhatsApp</button>
+</form>
+
+<script>
+function sendWhatsApp() {
+    const form = document.getElementById('whatsappForm');
+    const name = form.name.value.trim();
+    const company = form.company.value.trim();
+    const phone = form.phone.value.trim();
+    const equipment = form.equipment.value;
+    const size = form.size.value.trim();
+    const details = form.details.value.trim();
+
+    if (!name || !phone || !equipment || !size) {
+        alert("Please fill in all required fields!");
+        return;
+    }
+
+    const message = `
+Hello Wilsoncat,
+My name is ${name} from ${company || 'N/A'}.
+Phone: ${phone}
+Equipment / Part: ${equipment}
+Size / Specification: ${size}
+Additional Details: ${details || 'N/A'}
+`;
+
+    const whatsappURL = "https://wa.me/2348094825394?text=" + encodeURIComponent(message);
+    window.open(whatsappURL, "_blank");
+}
+</script>
                     </form>
                 </div>
             </div>
