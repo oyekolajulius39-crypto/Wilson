@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Gallery - Wilson Caterpillar Nigeria Enterprises</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 64px 0;
+        }
+        
+        .filter-btn {
+            padding: 12px 28px;
+            background: var(--cat-white);
+            border: 2px solid var(--cat-light-gray);
+            color: var(--cat-charcoal);
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-family: 'Lexend', sans-serif;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--cat-yellow);
+            color: var(--cat-black);
+        }
+        
+        .filter-btn.active {
+            background: var(--cat-yellow);
+            border-color: var(--cat-yellow);
+            color: var(--cat-black);
+            box-shadow: 0 4px 12px rgba(253, 218, 36, 0.3);
+        }
+        
+        .gallery-section {
+            padding: 80px 0 120px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .gallery-item {
+            transition: var(--transition-smooth);
+        }
+        
+        .gallery-item-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-item-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        
+        .gallery-item:hover .gallery-item-image {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--cat-yellow);
+            color: var(--cat-black);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+        
+        .gallery-item-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--cat-black);
+            margin-bottom: 8px;
+        }
+        
+        .gallery-item-category {
+            font-size: 14px;
+            color: var(--cat-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-filters {
+                gap: 12px;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo-section">
+                <div class="logo-mark">W</div>
+                <div class="logo-text">
+                    <span class="logo-primary">WILSONCAT</span>
+                    <span class="logo-secondary">CATERPILLAR NIGERIA</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="equipment.html" class="nav-link active">Equipment</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="contact.html#quote" class="nav-cta">Request Quote</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero" style="padding: 160px 0 100px; background: linear-gradient(135deg, var(--cat-black) 0%, var(--cat-charcoal) 100%); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(253, 218, 36, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(253, 218, 36, 0.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="container" style="position: relative; z-index: 10;">
+            <div class="section-label">SHOWCASE</div>
+            <h1 style="font-size: 64px; font-weight: 900; color: var(--cat-white); margin-bottom: 20px;">Equipment Gallery</h1>
+            <p style="font-size: 20px; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto;">Explore our range of Caterpillar equipment and genuine spare parts</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Items</button>
+                <button class="filter-btn" data-filter="spare-parts">Spare Parts</button>
+                <button class="filter-btn" data-filter="heavy-equipment">Heavy Equipment</button>
+                <button class="filter-btn" data-filter="industrial">Industrial Machinery</button>
+                <button class="filter-btn" data-filter="projects">Construction Projects</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="heavy-equipment">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Heavy Equipment</div>
+                        <img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=700&q=80" alt="Caterpillar Excavator" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Hydraulic Excavator CAT 320</h3>
+                    <p class="gallery-item-category">Earthmoving Equipment</p>
+                </div>
+
+                <div class="gallery-item" data-category="heavy-equipment">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Heavy Equipment</div>
+                        <img src="https://images.unsplash.com/photo-1625315496632-7b525c9e7e10?w=700&q=80" alt="Caterpillar Bulldozer" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Track-Type Tractor D6</h3>
+                    <p class="gallery-item-category">Bulldozers</p>
+                </div>
+
+                <div class="gallery-item" data-category="heavy-equipment">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Heavy Equipment</div>
+                        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=700&q=80" alt="Wheel Loader" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Wheel Loader 950M</h3>
+                    <p class="gallery-item-category">Material Handling</p>
+                </div>
+
+                <div class="gallery-item" data-category="spare-parts">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Spare Parts</div>
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=700&q=80" alt="Engine Parts" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">CAT Engine Components</h3>
+                    <p class="gallery-item-category">Engine Parts</p>
+                </div>
+
+                <div class="gallery-item" data-category="spare-parts">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Spare Parts</div>
+                        <img src="https://images.unsplash.com/photo-1621264448270-9ef00e88a935?w=700&q=80" alt="Hydraulic Systems" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Hydraulic Pump Systems</h3>
+                    <p class="gallery-item-category">Hydraulic Components</p>
+                </div>
+
+                <div class="gallery-item" data-category="spare-parts">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Spare Parts</div>
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=80" alt="Track Parts" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Track & Undercarriage</h3>
+                    <p class="gallery-item-category">Undercarriage Parts</p>
+                </div>
+
+                <div class="gallery-item" data-category="projects">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Construction Projects</div>
+                        <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=700&q=80" alt="Construction Site" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Abuja Infrastructure Project</h3>
+                    <p class="gallery-item-category">Road Construction</p>
+                </div>
+
+                <div class="gallery-item" data-category="projects">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Construction Projects</div>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Mining Operation" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Mining Operations Support</h3>
+                    <p class="gallery-item-category">Mining Sector</p>
+                </div>
+
+                <div class="gallery-item" data-category="industrial">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Industrial Machinery</div>
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=700&q=80" alt="Generator" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">CAT Generator Sets</h3>
+                    <p class="gallery-item-category">Power Generation</p>
+                </div>
+
+                <div class="gallery-item" data-category="heavy-equipment">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Heavy Equipment</div>
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=80" alt="Motor Grader" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Motor Grader 140M</h3>
+                    <p class="gallery-item-category">Road Construction</p>
+                </div>
+
+                <div class="gallery-item" data-category="spare-parts">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Spare Parts</div>
+                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=700&q=80" alt="Filters" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Genuine CAT Filters</h3>
+                    <p class="gallery-item-category">Maintenance Parts</p>
+                </div>
+
+                <div class="gallery-item" data-category="industrial">
+                    <div class="gallery-item-image-wrapper">
+                        <div class="gallery-item-badge">Industrial Machinery</div>
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=700&q=80" alt="Compactor" class="gallery-item-image">
+                        <div class="gallery-item-overlay">
+                            <span style="color: var(--cat-yellow); font-weight: 700; font-size: 18px; text-transform: uppercase;">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="gallery-item-title">Vibratory Compactors</h3>
+                    <p class="gallery-item-category">Compaction Equipment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Need Specific Equipment or Parts?</h2>
+                <p class="cta-subtitle">Contact us for availability, pricing, and expert recommendations</p>
+                <div class="cta-buttons">
+                    <a href="contact.html#quote" class="btn btn-primary-alt">Request Equipment Quote</a>
+                    <a href="contact.html" class="btn btn-outline-light">Contact Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-mark">W</div>
+                        <div class="logo-text">
+                            <span class="logo-primary">WILSONCAT</span>
+                            <span class="logo-secondary">CATERPILLAR NIGERIA</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Nigeria's trusted supplier of genuine Caterpillar spare parts and heavy-duty construction equipment.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/wilsoncatng" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/2348094825394" target="_blank" class="social-link" aria-label="WhatsApp">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="equipment.html">Equipment</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#spare-parts">Spare Parts Supply</a></li>
+                        <li><a href="services.html#equipment-sales">Equipment Sales</a></li>
+                        <li><a href="services.html#machinery-support">Machinery Support</a></li>
+                        <li><a href="services.html#equipment-solutions">Equipment Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2a6 6 0 00-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 00-6-6z" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span>Shop 13, New Zuba Motor Spare Parts Market, FCT Abuja</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <div>
+                                <a href="tel:+2348094825394">08094825394</a><br>
+                                <a href="tel:+2348138622278">08138622278</a>
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" fill="currentColor"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" fill="currentColor"/>
+                            </svg>
+                            <a href="contact.html#quote">Request a Quote</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wilson Caterpillar Nigeria Enterprises. All rights reserved.</p>
+                <p class="footer-note">Authorized dealer of genuine Caterpillar parts and equipment</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/2348094825394" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M23.296 19.176c-.396-.198-2.344-1.156-2.707-1.29-.364-.132-.628-.198-.893.199-.264.396-1.023 1.288-1.254 1.552-.23.265-.462.298-.858.1-.396-.199-1.674-.617-3.187-1.967-1.177-1.05-1.973-2.348-2.204-2.745-.231-.396-.025-.61.173-.808.178-.177.396-.462.594-.693.199-.232.265-.397.397-.662.133-.265.067-.496-.033-.694-.1-.199-.892-2.15-1.221-2.943-.323-.772-.65-.667-.893-.68-.231-.011-.495-.013-.76-.013-.264 0-.693.1-1.056.496-.363.397-1.387 1.355-1.387 3.305 0 1.95 1.42 3.833 1.618 4.099.198.264 2.795 4.266 6.769 5.983.946.408 1.683.652 2.259.834.95.302 1.813.26 2.495.157.761-.113 2.344-.958 2.675-1.884.33-.925.33-1.718.231-1.884-.099-.165-.363-.264-.76-.462m-7.23 9.87h-.005a13.162 13.162 0 01-6.708-1.837l-.481-.286-4.988 1.309 1.33-4.864-.314-.499a13.148 13.148 0 01-2.013-7.013c.001-7.267 5.915-13.179 13.184-13.179 3.52 0 6.829 1.373 9.317 3.864a13.1 13.1 0 013.857 9.326c-.004 7.267-5.916 13.179-13.18 13.179m11.217-24.396A15.753 15.753 0 0016.067 0C7.327 0 .213 7.113.21 15.856c0 2.795.73 5.523 2.117 7.927L.076 32l8.407-2.205a15.843 15.843 0 007.578 1.931h.007c8.739 0 15.853-7.113 15.857-15.857a15.761 15.761 0 00-4.642-11.218z" fill="white"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

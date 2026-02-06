@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Wilson Caterpillar Nigeria Enterprises</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-section {
+            padding: 120px 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--cat-black) 0%, var(--cat-charcoal) 100%);
+            padding: 48px;
+            border-radius: 8px;
+            color: var(--cat-white);
+            height: fit-content;
+        }
+        
+        .contact-info-card h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--cat-yellow);
+        }
+        
+        .contact-info-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(253, 218, 36, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cat-yellow);
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--cat-white);
+        }
+        
+        .contact-details p,
+        .contact-details a {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        .contact-details a {
+            text-decoration: none;
+            transition: var(--transition-fast);
+            display: block;
+        }
+        
+        .contact-details a:hover {
+            color: var(--cat-yellow);
+        }
+        
+        .contact-form-wrapper {
+            background: var(--cat-white);
+            border: 2px solid var(--cat-light-gray);
+            border-radius: 8px;
+            padding: 48px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--cat-black);
+            margin-bottom: 8px;
+        }
+        
+        .form-label .required {
+            color: var(--cat-yellow);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--cat-light-gray);
+            border-radius: 4px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            color: var(--cat-charcoal);
+            transition: var(--transition-fast);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--cat-yellow);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: var(--cat-yellow);
+            color: var(--cat-black);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 16px rgba(253, 218, 36, 0.3);
+        }
+        
+        .submit-btn:hover {
+            background: var(--cat-yellow-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(253, 218, 36, 0.4);
+        }
+        
+        .map-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #F8F8F8 0%, var(--cat-white) 100%);
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-form-wrapper {
+                padding: 32px 24px;
+            }
+            
+            .contact-info-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo-section">
+                <div class="logo-mark">W</div>
+                <div class="logo-text">
+                    <span class="logo-primary">WILSONCAT</span>
+                    <span class="logo-secondary">CATERPILLAR NIGERIA</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="equipment.html" class="nav-link">Equipment</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="#quote" class="nav-cta">Request Quote</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero" style="padding: 160px 0 100px; background: linear-gradient(135deg, var(--cat-black) 0%, var(--cat-charcoal) 100%); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(253, 218, 36, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(253, 218, 36, 0.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="container" style="position: relative; z-index: 10;">
+            <div class="section-label">GET IN TOUCH</div>
+            <h1 style="font-size: 64px; font-weight: 900; color: var(--cat-white); margin-bottom: 20px;">Contact Wilsoncat</h1>
+            <p style="font-size: 20px; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto;">We're here to help with all your Caterpillar parts and equipment needs</p>
+        </div>
+    </section>
+
+    <section class="contact-section" id="quote">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <h3>Let's Work Together</h3>
+                    <p>Whether you need spare parts, equipment, or technical consultation, our team is ready to assist you with professional service and expert advice.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2a8 8 0 00-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 00-8-8z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Visit Our Office</h4>
+                            <p>Shop 13, New Zuba Motor Spare Parts Market<br>FCT Abuja, Nigeria</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <a href="tel:+2348094825394">+234 809 482 5394</a>
+                            <a href="tel:+2348138622278">+234 813 862 2278</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/2348094825394" target="_blank">Chat with us on WhatsApp</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="6" r="1.5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Follow Us</h4>
+                            <a href="https://instagram.com/wilsoncatng" target="_blank">@wilsoncatng on Instagram</a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--cat-yellow);">Business Hours</h4>
+                        <p style="font-size: 15px; color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                            Monday - Friday: 8:00 AM - 6:00 PM<br>
+                            Saturday: 9:00 AM - 4:00 PM<br>
+                            Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <h3 style="font-size: 32px; font-weight: 800; color: var(--cat-black); margin-bottom: 12px;">Request a Quote</h3>
+                    <p style="font-size: 16px; color: var(--cat-gray); margin-bottom: 32px;">Fill out the form below and we'll get back to you within 24 hours</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" id="company" class="form-input" placeholder="Your Company">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+234 XXX XXX XXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-input" placeholder="you@company.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Service Needed <span class="required">*</span></label>
+                            <select id="service" class="form-select" required>
+                                <option value="">Select a service</option>
+                                <option value="spare-parts">Caterpillar Spare Parts</option>
+                                <option value="equipment-sales">Heavy Equipment Sales</option>
+                                <option value="machinery-support">Industrial Machinery Support</option>
+                                <option value="equipment-solutions">Construction Equipment Solutions</option>
+                                <option value="technical-consultation">Technical Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Message / Requirements <span class="required">*</span></label>
+                            <textarea id="message" class="form-textarea" placeholder="Please provide details about the parts or equipment you need, including model numbers if available..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header-center">
+                <div class="section-label">VISIT US</div>
+                <h2 class="section-title">Find Our Location</h2>
+                <p class="section-subtitle">Shop 13, New Zuba Motor Spare Parts Market, FCT Abuja</p>
+            </div>
+            <div class="map-container" style="margin-top: 64px;">
+                <!-- Embedded Google Map -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.985!2d7.15!3d9.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDMnMDAuMCJOIDfCsDA5JzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1234567890"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Need Immediate Assistance?</h2>
+                <p class="cta-subtitle">Our team is available to answer your questions and provide expert guidance</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/2348094825394" class="btn btn-primary-alt" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="fill: currentColor;">
+                            <path d="M14.56 12.147c-.247-.124-1.465-.722-1.692-.806-.228-.083-.393-.124-.558.124-.165.248-.639.806-.783.971-.144.166-.289.186-.536.062-.247-.124-1.046-.386-1.992-1.23-.736-.657-1.233-1.468-1.378-1.716-.144-.247-.015-.381.108-.505.111-.111.247-.289.371-.433.124-.145.165-.248.247-.413.083-.165.041-.31-.021-.433-.062-.124-.558-1.343-.765-1.839-.202-.482-.407-.417-.558-.425-.144-.007-.31-.008-.475-.008-.165 0-.433.062-.66.31-.227.247-.867.847-.867 2.066 0 1.218.888 2.396 1.012 2.562.124.165 1.747 2.667 4.231 3.74.592.255.833.408 1.16.522.593.188.946.162 1.244.098.38-.074 1.465-.599 1.67-1.178.206-.578.206-1.074.144-1.178-.062-.103-.227-.165-.475-.289m-4.518 6.169h-.003a8.225 8.225 0 01-4.194-1.148l-.301-.179-3.119.819.833-3.04-.196-.312a8.237 8.237 0 01-1.258-4.384c.001-4.556 3.71-8.262 8.27-8.262 2.207 0 4.28.86 5.84 2.42a8.201 8.201 0 012.41 5.85c-.002 4.556-3.71 8.262-8.265 8.262m7.009-15.247A9.846 9.846 0 0010.042 0C4.579 0 .133 4.445.131 9.91c0 1.746.456 3.452 1.323 4.954L0 20l5.254-1.378a9.927 9.927 0 004.744 1.207h.004c5.462 0 9.908-4.446 9.91-9.911a9.847 9.847 0 00-2.901-7.019z"/>
+                        </svg>
+                        WhatsApp Us Now
+                    </a>
+                    <a href="tel:+2348094825394" class="btn btn-outline-light">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Call: 08094825394
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-mark">W</div>
+                        <div class="logo-text">
+                            <span class="logo-primary">WILSONCAT</span>
+                            <span class="logo-secondary">CATERPILLAR NIGERIA</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Nigeria's trusted supplier of genuine Caterpillar spare parts and heavy-duty construction equipment.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/wilsoncatng" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/2348094825394" target="_blank" class="social-link" aria-label="WhatsApp">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="equipment.html">Equipment</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#spare-parts">Spare Parts Supply</a></li>
+                        <li><a href="services.html#equipment-sales">Equipment Sales</a></li>
+                        <li><a href="services.html#machinery-support">Machinery Support</a></li>
+                        <li><a href="services.html#equipment-solutions">Equipment Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2a6 6 0 00-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 00-6-6z" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span>Shop 13, New Zuba Motor Spare Parts Market, FCT Abuja</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <div>
+                                <a href="tel:+2348094825394">08094825394</a><br>
+                                <a href="tel:+2348138622278">08138622278</a>
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" fill="currentColor"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" fill="currentColor"/>
+                            </svg>
+                            <a href="#quote">Request a Quote</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wilson Caterpillar Nigeria Enterprises. All rights reserved.</p>
+                <p class="footer-note">Authorized dealer of genuine Caterpillar parts and equipment</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/2348094825394" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M23.296 19.176c-.396-.198-2.344-1.156-2.707-1.29-.364-.132-.628-.198-.893.199-.264.396-1.023 1.288-1.254 1.552-.23.265-.462.298-.858.1-.396-.199-1.674-.617-3.187-1.967-1.177-1.05-1.973-2.348-2.204-2.745-.231-.396-.025-.61.173-.808.178-.177.396-.462.594-.693.199-.232.265-.397.397-.662.133-.265.067-.496-.033-.694-.1-.199-.892-2.15-1.221-2.943-.323-.772-.65-.667-.893-.68-.231-.011-.495-.013-.76-.013-.264 0-.693.1-1.056.496-.363.397-1.387 1.355-1.387 3.305 0 1.95 1.42 3.833 1.618 4.099.198.264 2.795 4.266 6.769 5.983.946.408 1.683.652 2.259.834.95.302 1.813.26 2.495.157.761-.113 2.344-.958 2.675-1.884.33-.925.33-1.718.231-1.884-.099-.165-.363-.264-.76-.462m-7.23 9.87h-.005a13.162 13.162 0 01-6.708-1.837l-.481-.286-4.988 1.309 1.33-4.864-.314-.499a13.148 13.148 0 01-2.013-7.013c.001-7.267 5.915-13.179 13.184-13.179 3.52 0 6.829 1.373 9.317 3.864a13.1 13.1 0 013.857 9.326c-.004 7.267-5.916 13.179-13.18 13.179m11.217-24.396A15.753 15.753 0 0016.067 0C7.327 0 .213 7.113.21 15.856c0 2.795.73 5.523 2.117 7.927L.076 32l8.407-2.205a15.843 15.843 0 007.578 1.931h.007c8.739 0 15.853-7.113 15.857-15.857a15.761 15.761 0 00-4.642-11.218z" fill="white"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
